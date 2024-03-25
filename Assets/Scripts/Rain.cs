@@ -64,5 +64,12 @@ public class Rain : MonoBehaviour
             // 충돌된 게임 오브젝트 파괴(빗방울 파괴)
             Destroy(this.gameObject); // this == 현재 이 스크립트가 부착된 게임 오브젝트
         }
+
+        // 르탄이와 충돌했을 때
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.AddScore(score);
+            Destroy(this.gameObject); // 르탄이와 충돌한 빗방울 오브젝트 파괴
+        }
     }
 }
