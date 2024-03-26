@@ -22,7 +22,8 @@ public class Rain : MonoBehaviour
         transform.position = new Vector3(x, y, 0);
 
         // 빗방울 타입 랜덤 지정
-        int type = Random.Range(1, 4); // 1, 2, 3 중에 랜덤 생성
+        int type = Random.Range(1, 5); // 1, 2, 3, 4 중에 랜덤 생성
+                                       // 4는 빨강 빗방울(맞으면 -5점)
 
         // 각각의 조건문들이 연관되어 있으니 else if로 적어주기
         // 빗방울 타입별 설정
@@ -44,15 +45,15 @@ public class Rain : MonoBehaviour
             score = 3;
             renderer.color = new Color(150 / 255f, 150 / 255f, 1f, 1f);
         }
-        
+        else if (type == 4) // 빨강 빗방울
+        {
+            size = 0.8f;
+            score = -5;
+            renderer.color = new Color(255 / 255.0f, 100.0f / 255.0f, 100.0f / 255.0f, 255.0f / 255.0f);
+        }
+
         // 랜덤 크기값으로 빗방울 크기 지정
         transform.localScale = new Vector3(size, size, 0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     // 충돌이 일어났을 때 호출되는 이벤트 함수
